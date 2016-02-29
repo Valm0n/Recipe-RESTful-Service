@@ -1,0 +1,58 @@
+<div class="col-lg-12">
+    <h1 class="h1">Recipes</h1>
+    <div class="col-lg-8">
+        <table st-table="recipesCopy" st-safe-src="recipes" class="table table-striped">
+            <thead>
+                <tr>
+                    <th st-sort="name">name</th>
+                    <th>description</th>
+                    <th>categories</th>
+                    <th st-sort="price">price</th>
+                    <th st-sort="difficulty">difficulty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="recipe in recipesCopy">
+                    <td>{{recipe.name}}</td>
+                    <td>{{recipe.description}}</td>
+                    <td>{{recipe.categories | serialize}}</td>
+                    <td>{{recipe.price | currency:"CHF"}}</td>
+                    <td>{{recipe.difficulty | difficulty}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <form class="col-lg-4">
+        <h4 class="h4">Add a Recipe</h4>
+        <div class="form-group">
+            <label for="newName">Name</label>
+            <input class="form-control" type="text" name="newName" ng-model="newRecipe.name" />
+        </div>
+        <div class="form-group">
+            <label for="newDescription">Description</label>
+            <input class="form-control" type="text" name="newDescription" ng-model="newRecipe.description" />
+        </div>
+        <div class="form-group">
+            <label for="newPrice">Price</label>
+            <input class="form-control" type="number" min="0" name="newPrice" ng-model="newRecipe.price" />
+        </div>
+        <div class="form-group">
+            <label for="newDifficulty">Difficulty</label>
+            <input class="form-control" type="number" max="5" min="0" name="newDifficulty" ng-model="newRecipe.difficulty" />
+        </div>
+        <div class="form-group">
+            <label for="newCategory">Categories</label>
+            <select class="form-control" name="newCategory" id="newCategory"
+                    ng-options="option.name for option in categories track by option.id"
+                    ng-model="newRecipe.categories" multiple></select>
+        </div>
+        <div class="form-group">
+            <label for="newIngredients">Ingredients</label>
+            <select class="form-control" name="newIngredients" id="newIngredients"
+                    ng-options="option.name for option in ingredients track by option.id"
+                    ng-model="newRecipe.ingredients" multiple></select>
+        </div>
+        
+        <input type="button" value="save" ng-click="saveNewRecipe()">
+    </form>
+</div>

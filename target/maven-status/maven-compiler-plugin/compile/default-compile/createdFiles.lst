@@ -1,0 +1,14 @@
+stuff\valm0n\restful\ui\controllers\CategoryController.class
+stuff\valm0n\restful\ui\repositories\CategoryRepository.class
+stuff\valm0n\restful\ui\models\Recipe.class
+stuff\valm0n\restful\ui\SampleWebStaticApplication.class
+stuff\valm0n\restful\ui\models\GenericModel.class
+stuff\valm0n\restful\ui\controllers\IngredientTypeController.class
+stuff\valm0n\restful\ui\models\Ingredient.class
+stuff\valm0n\restful\ui\controllers\RecipeController.class
+stuff\valm0n\restful\ui\repositories\RecipeRepository.class
+stuff\valm0n\restful\ui\repositories\IngredientTypeRepository.class
+stuff\valm0n\restful\ui\repositories\IngredientRepository.class
+stuff\valm0n\restful\ui\controllers\IngredientController.class
+stuff\valm0n\restful\ui\models\Category.class
+stuff\valm0n\restful\ui\models\IngredientType.class

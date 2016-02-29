@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recipes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-resource.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.7/smart-table.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/app.config.js"></script>
+        <script type="text/javascript" src="js/ingredient/ingredient.controller.js"></script>
+        <script type="text/javascript" src="js/ingredient/ingredient.service.js"></script>
+        <script type="text/javascript" src="js/ingredient-type/ingredient-type.service.js"></script>
+        <script type="text/javascript" src="js/ingredient-type/ingredientType.controller.js"></script>
+        <script type="text/javascript" src="js/recipe/recipe.controller.js"></script>
+        <script type="text/javascript" src="js/recipe/recipe.service.js"></script>
+        <script type="text/javascript" src="js/category/category.service.js"></script>
+    </head>
+    <body ng-app="app">
+
+        <div class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a ui-sref="app.recipes">Recipes</a></li>
+                        <li><a ui-sref="app.ingredients">Ingredients</a></li>
+                        <li><a ui-sref="app.ingredientTypes">Ingredient Types</a></li>
+                    </ul>
+                </div>
+        </div>
+
+        <ui-view/>
+    </body>
+</html>

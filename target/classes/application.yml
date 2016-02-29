@@ -1,0 +1,14 @@
+spring:
+  resources:
+    chain:
+      enabled: true
+  datasource:
+    url: jdbc:derby://localhost:1527/recipeByIngredients
+    username: recipe
+    password: recipe
+    driver-class-name: org.apache.derby.jdbc.ClientDriver
+  jpa:
+    generate-ddl: false
+    hibernate:
+      dialect: org.hibernate.dialect.DerbyDialect
+      ddl-auto: none

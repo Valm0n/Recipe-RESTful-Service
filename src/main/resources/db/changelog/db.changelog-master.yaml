@@ -1,0 +1,192 @@
+## Liquibase Database initialization
+## just set an empty database in application.yml; Liquibase will create all the tables we need
+---
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: vsimon
+      changes:
+        - createTable:
+            tableName: category
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+  - changeSet:
+      id: 2
+      author: vsimon
+      changes:
+        - createTable:
+            tableName: ingredient_type
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                      nullable: false
+                      primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+  - changeSet:
+      id: 3
+      author: vsimon
+      changes:
+        - createTable:
+            tableName: ingredient
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                      nullable: false
+                      primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+              - column:
+                  name: ingredient_type
+                  type: int
+                  constraints:
+                      nullable: false
+                      foreignKeyName: fk_ingredient_type
+                      references: ingredient_type(id)
+  - changeSet:
+      id: 4
+      author: vsimon
+      changes:
+        - createTable:
+            tableName: recipe
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                      nullable: false
+                      primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                      nullable: false
+              - column:
+                  name: steps
+                  type: clob
+                  constraints:
+                      nullable: false
+              - column:
+                  name: difficulty
+                  type: integer
+                  constraints:
+                      nullable: false
+              - column:
+                  name: price
+                  type: integer
+                  constraints:
+                      nullable: false
+  - changeSet:
+      id: 5
+      author: vsimon
+      changes:
+        - createTable:
+            tableName: rel_recipe_ingredients
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                      nullable: false
+                      primaryKey: true
+              - column:
+                  name: recipe_id
+                  type: int
+                  constraints:
+                      nullable: false
+                      foreignKeyName: fk_recipe_id
+                      references: recipe(id)
+              - column:
+                  name: ingredient_id
+                  type: int
+                  constraints:
+                      nullable: false
+                      foreignKeyName: fk_ingredient_id
+                      references: ingredient(id)
+  - changeSet:
+      id: 6
+      author: vsimon
+      changes:
+        - addUniqueConstraint:
+            columnNames: ingredient_id, recipe_id
+            constraintName: unique_ingredient_recipe_pair
+            tableName: rel_recipe_ingredients
+  - changeSet:
+      id: 7
+      author: vsimon
+      changes:
+        - createTable:
+            tableName: rel_recipe_categories
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                      nullable: false
+                      primaryKey: true
+              - column:
+                  name: recipe_id
+                  type: int
+                  constraints:
+                      nullable: false
+                      foreignKeyName: fk_recipe_2_id
+                      references: recipe(id)
+              - column:
+                  name: category_id
+                  type: int
+                  constraints:
+                      nullable: false
+                      foreignKeyName: fk_category_id
+                      references: category(id)
+  - changeSet:
+      id: 8
+      author: vsimon
+      changes:
+        - addUniqueConstraint:
+            columnNames: recipe_id, category_id
+            constraintName: unique_category_recipe_pair
+            tableName: rel_recipe_categories
